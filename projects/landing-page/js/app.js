@@ -23,6 +23,7 @@
  * 
 */
 
+let sections = document.querySelectorAll('.section');
 
 /**
  * End Global Variables
@@ -39,6 +40,29 @@
 */
 
 // build the nav
+
+
+function createNav(){
+
+     let navUnorderedList = document.getElementById('navbar__list');
+
+     for (let i=1; i<sections.length; i++){
+        navLink = document.createElement('a');
+        navLink.href = sections[i].href;
+    }
+        
+        for (let i = 0; i < sections.length; i++){
+            let navItem = document.createElement('li');
+            navUnorderedList.appendChild(navItem);
+            navItem.appendChild(navLink);
+        }
+    }
+
+createNav();
+
+
+
+
 
 
 // Add class 'active' to section when near top of viewport
