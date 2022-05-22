@@ -23,7 +23,7 @@
  * 
 */
 
-let sections = document.querySelectorAll('.section');
+
 
 /**
  * End Global Variables
@@ -43,18 +43,20 @@ let sections = document.querySelectorAll('.section');
 
 
 function createNav(){
+    let sections = document.querySelectorAll('.section');
 
-     let navUnorderedList = document.getElementById('navbar__list');
+    let navUnorderedList = document.getElementById('navbar__list');
 
-     for (let i=1; i<sections.length; i++){
-        navLink = document.createElement('a');
-        navLink.href = sections[i].href;
-    }
+    let text = ['', 'Section One', 'Section Two', 'Section Three', 'Section Four', 'Section Five', 'Section Six', 'Section 7'];
         
-        for (let i = 0; i < sections.length; i++){
+        for (let i = 0; i <= sections.length; i++){
             let navItem = document.createElement('li');
-            navUnorderedList.appendChild(navItem);
+            let navLink = document.createElement('a');
+            navLink.innerHTML = text[i];
+            navLink.href = "#section"+[i];
             navItem.appendChild(navLink);
+            navUnorderedList.appendChild(navItem);
+            
         }
     }
 
