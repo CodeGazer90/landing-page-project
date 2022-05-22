@@ -22,6 +22,7 @@
  * Define Global Variables
  * 
 */
+let sections = document.querySelectorAll('.section');
 
 
 
@@ -43,17 +44,18 @@
 
 
 function createNav(){
-    let sections = document.querySelectorAll('.section');
-
+    
     let navUnorderedList = document.getElementById('navbar__list');
 
-    let text = ['', 'Section One', 'Section Two', 'Section Three', 'Section Four', 'Section Five', 'Section Six', 'Section 7'];
+    let text = "Section";
         
-        for (let i = 0; i <= sections.length; i++){
+        for (let i = 0; i < sections.length; i++){
             let navItem = document.createElement('li');
+            navItem.classList.add("navbar__items");
+            navItem.style.cssText = "text-decoration: none; color:white";
             let navLink = document.createElement('a');
-            navLink.innerHTML = text[i];
-            navLink.href = "#section"+[i];
+            navLink.innerHTML =  text + [i+1];
+            navLink.href = "#section"+[i+1];
             navItem.appendChild(navLink);
             navUnorderedList.appendChild(navItem);
             
@@ -68,6 +70,8 @@ createNav();
 
 
 // Add class 'active' to section when near top of viewport
+
+
 
 
 // Scroll to anchor ID using scrollTO event
