@@ -24,6 +24,7 @@
 */
 let sections = document.querySelectorAll('.section');
 
+sections.forEach(section => section.classList.add('inView'));
 
 
 /**
@@ -54,6 +55,8 @@ function createNav(){
             navItem.classList.add("navbar__items");
             navItem.style.cssText = "text-decoration: none; color:white";
             let navLink = document.createElement('a');
+            navLink.classList.add("inView");
+            navLink.classList.add("links");
             navLink.innerHTML =  text + [i+1];
             navLink.href = "#section"+[i+1];
             navItem.appendChild(navLink);
@@ -71,11 +74,47 @@ createNav();
 
 // Add class 'active' to section when near top of viewport
 
+function activeSection(){
+    
+    let viewportHeight = window.innerHeight;
+    let viewportWidth = window.innerWidth;
+    // console.log(viewportHeight, viewportWidth);
+    let links = document.getElementsByClassName('links');
+    
+    for (let section of sections) {
 
+        
+        let view = section.getBoundingClientRect();
+        // console.log(view);
+
+        if (section.classList.contains("inView") && links.classList.contains("inView")){
+            section.classList.add('your-active-class');
+            links.forEach(link => link.classList.add('your-active-class'));
+        } else{
+            section.classList.remove('your-active-class');
+            links.forEach(link => link.classList.remove('your-active-class'));
+        } 
+        
+
+        if (view.top <= viewportHeight && view.bottom >= viewportHeight) {
+
+        section.classList.add('your-active-class');
+        
+        } else{
+            section.classList.remove('your-active-class')
+        }
+    
+    }
+    
+}
+
+activeSection();
 
 
 // Scroll to anchor ID using scrollTO event
 
+
+    
 
 /**
  * End Main Functions
