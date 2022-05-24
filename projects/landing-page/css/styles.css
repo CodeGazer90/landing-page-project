@@ -88,6 +88,23 @@ section {
     transition: ease 0.3s all;
 }
 
+.links{
+    text-decoration: none;
+    
+}
+
+.your-active-class,.links:hover{
+    text-decoration: none;
+    background-color: seagreen;
+    
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    margin-top:30px;
+    margin-bottom:30px;
+}
 /* Header Styles */
 .page__header {
     background: #fff;

@@ -96,6 +96,16 @@ function activeSection(){
     
 }
 
+let links = document.querySelectorAll('li');
+
+links.forEach((link) => {
+    link.addEventListener('click', () =>{
+        links.forEach(link => link.classList.remove('your-active-class'));
+        link.classList.add('your-active-class');
+    })
+})
+
+
 
 // window.addEventListener('scroll',activeSection());
 
@@ -110,10 +120,7 @@ function activeSection(){
 // links.classList.contains("inView");
 
 
-// links.forEach(link => link.addEventListener('click',function(){
-//     link.classList.add('your-active-class');
-//     link.scrollIntoView();
-// }))
+
 
 
 
