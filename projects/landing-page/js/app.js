@@ -53,7 +53,7 @@ function createNav(){
         for (let i = 0; i < sections.length; i++){
             let navItem = document.createElement('li');
             navItem.classList.add("navbar__items");
-            navItem.style.cssText = "text-decoration: none; color:white";
+            // navItem.style.cssText = "text-decoration: none; color:white";
             let navLink = document.createElement('a');
             navLink.classList.add("inView");
             navLink.classList.add("links");
@@ -70,45 +70,53 @@ createNav();
 
 
 
-
-
 // Add class 'active' to section when near top of viewport
 
 function activeSection(){
     
     let viewportHeight = window.innerHeight;
     let viewportWidth = window.innerWidth;
-    // console.log(viewportHeight, viewportWidth);
-    let links = document.getElementsByClassName('links');
     
+    // console.log(viewportHeight, viewportWidth);
+    // console.log(view);
     for (let section of sections) {
 
-        
         let view = section.getBoundingClientRect();
-        // console.log(view);
 
-        if (section.classList.contains("inView") && links.classList.contains("inView")){
+        if (section.classList.contains("inView") && view.top <= viewportHeight && view.bottom >= 0 ){
             section.classList.add('your-active-class');
-            links.forEach(link => link.classList.add('your-active-class'));
+            section.style.backgroundColor = 'green';
+            
         } else{
             section.classList.remove('your-active-class');
-            links.forEach(link => link.classList.remove('your-active-class'));
+            
         } 
-        
 
-        if (view.top <= viewportHeight && view.bottom >= viewportHeight) {
-
-        section.classList.add('your-active-class');
-        
-        } else{
-            section.classList.remove('your-active-class')
-        }
-    
     }
     
 }
 
-activeSection();
+
+// window.addEventListener('scroll',activeSection());
+
+
+
+// let links = document.querySelectorAll("a");
+
+// links.forEach(link => link.classList.add('your-active-class'));
+
+// links.forEach(link => link.classList.remove('your-active-class'));
+
+// links.classList.contains("inView");
+
+
+// links.forEach(link => link.addEventListener('click',function(){
+//     link.classList.add('your-active-class');
+//     link.scrollIntoView();
+// }))
+
+
+
 
 
 // Scroll to anchor ID using scrollTO event
