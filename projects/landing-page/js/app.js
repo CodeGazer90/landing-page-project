@@ -23,8 +23,8 @@
  * 
 */
 let sections = document.querySelectorAll('.section');
+let links = document.querySelectorAll('li');
 
-sections.forEach(section => section.classList.add('inView'));
 
 
 /**
@@ -53,7 +53,6 @@ function createNav(){
         for (let i = 0; i < sections.length; i++){
             let navItem = document.createElement('li');
             navItem.classList.add("navbar__items");
-            // navItem.style.cssText = "text-decoration: none; color:white";
             let navLink = document.createElement('a');
             navLink.classList.add("inView");
             navLink.classList.add("links");
@@ -72,31 +71,42 @@ createNav();
 
 // Add class 'active' to section when near top of viewport
 
-function activeSection(){
+window.addEventListener('scroll',function (){
     
+   
+
     let viewportHeight = window.innerHeight;
     let viewportWidth = window.innerWidth;
-    
     // console.log(viewportHeight, viewportWidth);
     // console.log(view);
     for (let section of sections) {
-
-        let view = section.getBoundingClientRect();
-
-        if (section.classList.contains("inView") && view.top <= viewportHeight && view.bottom >= 0 ){
-            section.classList.add('your-active-class');
-            section.style.backgroundColor = 'green';
-            
-        } else{
-            section.classList.remove('your-active-class');
-            
-        } 
-
-    }
+    let view = section.getBoundingClientRect();
     
-}
+       if (viewportHeight >= view.top) {
+           section.classList.add('inView');
+           section.classList.add("your-active-class");
+           section.style.backgroundColor = "green";
+          
+       }
+     
 
-let links = document.querySelectorAll('li');
+       if (section.classList !== "inView" && view.top <= 0 && view.bottom < viewportHeight){
+       section.classList.remove('your-active-class');
+       section.style.backgroundColor = null;
+       
+    }
+    }
+
+  
+    
+});
+
+
+
+
+
+
+
 
 links.forEach((link) => {
     link.addEventListener('click', () =>{
@@ -105,30 +115,11 @@ links.forEach((link) => {
     })
 })
 
-
-
-// window.addEventListener('scroll',activeSection());
-
-
-
-// let links = document.querySelectorAll("a");
-
-// links.forEach(link => link.classList.add('your-active-class'));
-
-// links.forEach(link => link.classList.remove('your-active-class'));
-
-// links.classList.contains("inView");
-
-
-
-
-
-
-
+// sections.forEach(section => section.addEventListener('click',scrollIntoView({behavior: "smooth"})));
 
 // Scroll to anchor ID using scrollTO event
 
-
+// sections.forEach(section => section.scrollIntoView({behavior:'smooth'}));
     
 
 /**
@@ -144,3 +135,17 @@ links.forEach((link) => {
 // Set sections as active
 
 
+
+
+
+
+
+
+// if (section.classList.contains("inView") && view.top <= viewportHeight && view.bottom >= 0 ){
+//     section.classList.add('your-active-class');
+//     section.style.backgroundColor = 'green';
+    
+// } else{
+//     section.classList.remove('your-active-class');
+    
+// } 
