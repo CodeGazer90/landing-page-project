@@ -94,9 +94,12 @@ section {
 }
 
 .your-active-class,.links:hover{
-    text-decoration: none;
     background-color: seagreen;
     
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 ul{
