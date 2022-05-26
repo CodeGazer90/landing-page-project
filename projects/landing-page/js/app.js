@@ -24,10 +24,9 @@
 */
 let sections = document.querySelectorAll('.section');
 let links = document.querySelectorAll('li');
+// 
 
-// links.forEach((link) => {
-//     link.addEventListener('click', scrollToSection )
-// })
+
 
 // function scrollToSection(){
 //     for (let i=0; i < sections.length; i++){
@@ -64,7 +63,7 @@ function createNav(){
             navUnorderedList.appendChild(navItem);
             
         }
-
+        
       
     }
 
@@ -95,6 +94,7 @@ window.addEventListener('scroll',function (){
     section.style.backgroundColor = null;
     
     }
+
     }
  
 });
@@ -110,9 +110,9 @@ window.addEventListener('scroll',function (){
 //     })
 // })
 
-// sections.forEach(section => section.addEventListener('click',scrollIntoView({behavior: "smooth"})));
 
-// Scroll to anchor ID using scrollTO event
+
+
 
 // sections.forEach(section => section.scrollIntoView({behavior:'smooth'}));
     
@@ -123,11 +123,6 @@ window.addEventListener('scroll',function (){
  * 
 */
 
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
 
 
 
@@ -135,12 +130,5 @@ window.addEventListener('scroll',function (){
 
 
 
+sections.forEach(section => section.addEventListener('click',scroll({behavior: "smooth"})));
 
-// if (section.classList.contains("inView") && view.top <= viewportHeight && view.bottom >= 0 ){
-//     section.classList.add('your-active-class');
-//     section.style.backgroundColor = 'green';
-    
-// } else{
-//     section.classList.remove('your-active-class');
-    
-// } 
