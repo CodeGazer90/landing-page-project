@@ -93,14 +93,18 @@ section {
     
 }
 
-.your-active-class,.links:hover{
-    background-color: seagreen;
+.your-active-class{
+    background-color: yellow;
     
 }
 
-html{
+/* .inView{
+    background-color: seagreen;
+} */
+
+/* html{
     scroll-behavior: smooth;
-}
+} */
 
 ul{
     display: flex;

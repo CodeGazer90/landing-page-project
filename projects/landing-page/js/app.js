@@ -26,15 +26,6 @@ let sections = document.querySelectorAll('.section');
 let links = document.querySelectorAll('li');
 // 
 
-
-
-// function scrollToSection(){
-//     for (let i=0; i < sections.length; i++){
-//         document.getElementById('Section'[i+1])
-//             link.scrollIntoView({behavior:'smooth'})
-//     }
-    
-// }
 /**
  * End Global Variables
 
@@ -54,8 +45,9 @@ function createNav(){
         for (let i = 0; i < sections.length; i++){
             let navItem = document.createElement('li');
             navItem.classList.add("navbar__items");
+            navItem.classList.add("section"+[i+1]);
             let navLink = document.createElement('a');
-            navLink.classList.add("inView");
+            // navLink.classList.add("inView");
             navLink.classList.add("links");
             navLink.innerHTML =  text + [i+1];
             navLink.href = "#section"+[i+1];
@@ -64,55 +56,53 @@ function createNav(){
             
         }
         
-      
+
     }
 
 createNav();
 
-
-
-
 // making the sections active when scrolled into the viewport and turning it green
 
-window.addEventListener('scroll',function (){
-
+window.addEventListener("scroll", function () {
     let viewportHeight = window.innerHeight;
     let viewportWidth = window.innerWidth;
     // console.log(viewportHeight, viewportWidth);
     // console.log(view);
+  
     for (let section of sections) {
-    let view = section.getBoundingClientRect();
-    
-    if (viewportHeight >= view.top) {
-        section.classList.add('inView');
+      let view = section.getBoundingClientRect();
+  
+      if (view.top >= 0 && view.left >= 0 && view.right <= viewportWidth  && view.bottom <= viewportHeight) {
+        // section.classList.add("inView");
         section.classList.add("your-active-class");
-        section.style.backgroundColor = "green"; 
+        section.style.backgroundColor = "green";
+  
+        let links = document.querySelectorAll("li");
+        
+        links.forEach((link) => {
+            let linkClasses = link.classList;
+            let sectionId = section.getAttribute("id");
+            
+            if (linkClasses.contains(sectionId)){
+              link.classList.add("your-active-class");
+            } else {
+              link.classList.remove("your-active-class");
+              // section.classList.remove("inView");
+             
+            }
+          });
+      } else{
+        section.classList.remove('your-active-class');
+        section.style.backgroundColor = null;
     }
+      
+    }
+  });
+
+
+navUnorderedList.addEventListener('click',(event) => {
     
-    if (section.classList !== "inView" && view.top <= 0 && view.bottom < viewportHeight){
-    section.classList.remove('your-active-class');
-    section.style.backgroundColor = null;
-    
-    }
-
-    }
- 
-});
-
-
-
-
-// links.forEach( link => {
-//     link.addEventListener('click', () =>{
-//         links.forEach(link => link.classList.remove('your-active-class'));
-//         link.classList.add('your-active-class');
-//         // link.style.backgroundColor = "green"
-//     })
-// })
-
-
-
-
+})
 
 // sections.forEach(section => section.scrollIntoView({behavior:'smooth'}));
     
@@ -130,5 +120,5 @@ window.addEventListener('scroll',function (){
 
 
 
-sections.forEach(section => section.addEventListener('click',scroll({behavior: "smooth"})));
+
 
