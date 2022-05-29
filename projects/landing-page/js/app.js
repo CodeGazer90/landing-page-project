@@ -24,6 +24,10 @@
 */
 let sections = document.querySelectorAll('.section');
 let links = document.querySelectorAll('li');
+
+
+
+
 // 
 
 /**
@@ -100,25 +104,13 @@ window.addEventListener("scroll", function () {
   });
 
 
-navUnorderedList.addEventListener('click',(event) => {
-    
-})
+// function scrollToSection(event){
+//     for (let link of links){
+//         event.preventDefault();
+//         link.scrollIntoView({ behavior: 'smooth'});
+//     }
+// };
 
-// sections.forEach(section => section.scrollIntoView({behavior:'smooth'}));
-    
+// let navUnorderedList = document.getElementById('navbar__list');
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-
-
-
-
-
-
-
-
-
+// navUnorderedList.addEventListener('click',scrollToSection());
