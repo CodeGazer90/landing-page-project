@@ -23,7 +23,7 @@
  * 
 */
 let sections = document.querySelectorAll('.section');
-let links = document.querySelectorAll('li');
+
 
 
 
@@ -51,10 +51,12 @@ function createNav(){
             navItem.classList.add("navbar__items");
             navItem.classList.add("section"+[i+1]);
             let navLink = document.createElement('a');
-            // navLink.classList.add("inView");
             navLink.classList.add("links");
             navLink.innerHTML =  text + [i+1];
             navLink.href = "#section"+[i+1];
+            navLink.addEventListener('click',function(event){
+                event.preventDefault();
+                document.getElementById("section"+[i+1]).scrollIntoView({behavior: 'smooth'})});
             navItem.appendChild(navLink);
             navUnorderedList.appendChild(navItem);
             
@@ -104,13 +106,14 @@ window.addEventListener("scroll", function () {
   });
 
 
-// function scrollToSection(event){
+
+let links = document.querySelectorAll('a');
+
+// function scrollToSection(){
 //     for (let link of links){
-//         event.preventDefault();
-//         link.scrollIntoView({ behavior: 'smooth'});
+//         link.addEventListener('click',function(event){
+//             event.preventDefault();
+//             document.getElementById("section"+[i+1]).scrollIntoView()});
 //     }
-// };
+// }
 
-// let navUnorderedList = document.getElementById('navbar__list');
-
-// navUnorderedList.addEventListener('click',scrollToSection());
