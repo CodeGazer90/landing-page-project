@@ -37,7 +37,7 @@ let sections = document.querySelectorAll('.section');
  * 
 */
 
-// building the navigation bar by creating a for loop that will create a list item, five it the class navbar__items, creating a tag and giving it two classes of "inView" and "links". The innerHTML and href for the links are created dynamically so that when ever a new section is added, they will be automatically added to the nav bar. Lastly, the links are appended to the li and the li is appended to the UL.
+// building the navigation bar by creating a for loop that will create a list item, give it the class navbar__items, creating a tag and giving it two classes of "inView" and "links". The innerHTML and href for the links are created dynamically so that when ever a new section is added, they will be automatically added to the nav bar. Lastly, the links are appended to the li and the li is appended to the UL.
 
 
 function createNav(){
@@ -81,7 +81,7 @@ window.addEventListener("scroll", function () {
       if (view.top >= 0 && view.left >= 0 && view.right <= viewportWidth  && view.bottom <= viewportHeight) {
         // section.classList.add("inView");
         section.classList.add("your-active-class");
-        section.style.backgroundColor = "green";
+        section.style.backgroundColor = "blue";
   
         let links = document.querySelectorAll("li");
         
@@ -107,7 +107,7 @@ window.addEventListener("scroll", function () {
 
 
 
-let links = document.querySelectorAll('a');
+
 
 // function scrollToSection(){
 //     for (let link of links){
